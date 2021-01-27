@@ -13,22 +13,28 @@ public class GenderActivity extends AppCompatActivity {
     private Button genderFemale;
     private Button genderMale;
 
-    private TextView question, noIndicator;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gender);
 
-        Toolbar toolbar = findViewById(R.id.toolbar)
 
         genderFemale=findViewById(R.id.gender_female);
         genderFemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent genderIntent = new Intent(GenderActivity.this, GenderActivity.class);
+                Intent genderIntent = new Intent(GenderActivity.this, QuestionActivity.class);
                 startActivity(genderIntent);
 
+            }
+        });
+
+        genderMale=findViewById(R.id.gender_male);
+        genderMale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent genderIntent = new Intent(GenderActivity.this, QuestionActivity.class);
+                startActivity(genderIntent);
             }
         });
 
