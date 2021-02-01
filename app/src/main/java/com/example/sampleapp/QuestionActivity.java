@@ -110,4 +110,8 @@ public class QuestionActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void checkAnswer(){
+        
+    }
 }
