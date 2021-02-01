@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toolbar;
 
 public class GenderActivity extends AppCompatActivity {
     private Button genderFemale;
@@ -19,7 +17,7 @@ public class GenderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gender);
 
 
-        genderFemale=findViewById(R.id.gender_female);
+        genderFemale=findViewById(R.id.choice_one);
         genderFemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,7 +27,7 @@ public class GenderActivity extends AppCompatActivity {
             }
         });
 
-        genderMale=findViewById(R.id.gender_male);
+        genderMale=findViewById(R.id.choice_four);
         genderMale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
