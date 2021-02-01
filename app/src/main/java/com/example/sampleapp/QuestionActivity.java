@@ -1,10 +1,15 @@
 package com.example.sampleapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -21,8 +26,11 @@ public class QuestionActivity extends AppCompatActivity {
     private LinearLayout optionsContainer;
     private ImageButton nextBtn;
     private int count = 0;
-    private List<QuestionModel> list;
+    private List<QuestionModel> list = new ArrayList<>();
     private int position = 0;
+
+    private static final String TAG = "MyAppTag";
+
 
 
     @Override
@@ -37,7 +45,8 @@ public class QuestionActivity extends AppCompatActivity {
         optionsContainer = findViewById(R.id.options_container);
         nextBtn = findViewById(R.id.next_btn);
 
-        final List<QuestionModel> list = new ArrayList<>();
+//        final List<QuestionModel> list = new ArrayList<>();
+        list = new ArrayList<>();
         list.add(new QuestionModel("Gift for Him/Her?", "Female", "Male", "Gay", "Lesbian"));
         list.add(new QuestionModel("Age", "Baby", "Kid", "Teen", "Adult"));
         list.add(new QuestionModel("Occassion", "Birthday", "Christmas", "Graduation", "Just Because"));
@@ -46,17 +55,26 @@ public class QuestionActivity extends AppCompatActivity {
 
         for(int i = 0; i < 4; i++){
             optionsContainer.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void onClick(View v) {
-
+                    checkAnswer((Button)v);
                 }
             });
         }
 
+        playAnim(question, 0, list.get(position).getQuestion());
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nextBtn.setEnabled(false);
+                nextBtn.setAlpha(0.7f);
+                position++;
+                if(position == list.size()){
+                    //score activity
+                    return;
+                }
                 count = 0;
                 playAnim(question, 0, list.get(position).getQuestion());
 
@@ -69,8 +87,10 @@ public class QuestionActivity extends AppCompatActivity {
                 .setInterpolator(new DecelerateInterpolator()).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
-                if(value == 0){
+                if(value == 0 && count<4){
                     String option = "";
+                    Log.d(TAG, String.valueOf(value));
+
                     if(count == 0){
                         option= list.get(position).getOptionA();
                     }
@@ -94,7 +114,13 @@ public class QuestionActivity extends AppCompatActivity {
                 //data change
 
                 if(value == 0 ){
-                    ((TextView) view).setText(data);
+                    try{
+                        ((TextView) view).setText(data);
+                    }catch(ClassCastException ex){
+                        ((Button) view).setText(data);
+                    }
+//                    ((TextView) view).setText(data);
+                    view.setTag(data);
                     playAnim(view, 1, data);
                 }
             }
@@ -111,7 +137,18 @@ public class QuestionActivity extends AppCompatActivity {
         });
     }
 
-    private void checkAnswer(){
-        
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void checkAnswer(Button selectedOption){
+        nextBtn.setEnabled(true);
+        nextBtn.setAlpha(1);
+        if(selectedOption.getText().toString().equals(list.get(position).getOptionA())){
+            selectedOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#a83232")));
+        }
+        else{
+
+        }
+
     }
+
+
 }
