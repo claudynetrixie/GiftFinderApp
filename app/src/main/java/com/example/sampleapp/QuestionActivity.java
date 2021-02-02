@@ -66,10 +66,12 @@ public class QuestionActivity extends AppCompatActivity {
         playAnim(question, 0, list.get(position).getQuestion());
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                 nextBtn.setEnabled(false);
                 nextBtn.setAlpha(0.7f);
+                enableOption(true);
                 position++;
                 if(position == list.size()){
                     //score activity
@@ -116,6 +118,8 @@ public class QuestionActivity extends AppCompatActivity {
                 if(value == 0 ){
                     try{
                         ((TextView) view).setText(data);
+                        noIndicator.setText(position+1 + "/" + list.size());
+
                     }catch(ClassCastException ex){
                         ((Button) view).setText(data);
                     }
@@ -148,6 +152,16 @@ public class QuestionActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void enableOption(boolean enable){
+        for (int i=0; i<4; i++){
+            optionsContainer.getChildAt(i).setEnabled(enable);
+            if(enable){
+                optionsContainer.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#a83232")));
+            }
+        }
     }
 
 
