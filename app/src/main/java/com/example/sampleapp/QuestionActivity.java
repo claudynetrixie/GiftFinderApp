@@ -77,12 +77,6 @@ public class QuestionActivity extends AppCompatActivity {
                     Log.d(TAG, "Value is: " + value.getQuestion());
                 }
 
-                Log.d(TAG, "HERE");
-                for(QuestionModel model: list) {
-                    Log.d(TAG, model.getQuestion());
-                    System.out.println(model.getQuestion());
-                }
-
                 if(list.size() > 0){
                     for(int i = 0; i < 4; i++){
                         optionsContainer.getChildAt(i).setOnClickListener(new View.OnClickListener() {
@@ -155,7 +149,7 @@ public class QuestionActivity extends AppCompatActivity {
                         option= list.get(position).getOptionD();
                     }
 
-                    playAnim(optionsContainer.getChildAt(count), 1, option);
+                    playAnim(optionsContainer.getChildAt(count), 0, option);
                     count++;
                 }
             }
