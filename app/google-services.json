@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "83003543268",
+    "project_id": "giftfinder-71297",
+    "storage_bucket": "giftfinder-71297.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83003543268:android:4d3a8e1e2da1ae8b8026f1",
+        "android_client_info": {
+          "package_name": "com.example.sampleapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83003543268-u7curhrsk0g62mad7gubf1lp8du445ee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClcz3jLAr5rBvztwxTatOBJwGQ0c4XarE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83003543268-u7curhrsk0g62mad7gubf1lp8du445ee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
