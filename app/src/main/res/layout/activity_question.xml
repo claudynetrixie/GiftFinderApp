@@ -44,7 +44,6 @@
             android:background="@drawable/category_bg"
             android:gravity="center"
             android:padding="40dp"
-            android:text="How old?"
             android:textColor="@android:color/black"
             android:textSize="35sp" />
 
@@ -54,7 +53,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="16dp"
-            android:text="2/5"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -90,7 +88,6 @@
             android:background="@drawable/rounded_borders"
             android:backgroundTint="#FFAC8A"
             android:gravity="center"
-            android:text="Baby"
             android:textColor="@android:color/white"
             android:textSize="25sp" />
 
@@ -102,7 +99,6 @@
             android:background="@drawable/rounded_borders"
             android:backgroundTint="#FB9C5C"
             android:gravity="center"
-            android:text="Kid"
             android:textColor="@android:color/white"
             android:textSize="25sp" />
 
@@ -114,7 +110,6 @@
             android:background="@drawable/rounded_borders"
             android:backgroundTint="#F97924"
             android:gravity="center"
-            android:text="Teen"
             android:textColor="@android:color/white"
             android:textSize="25sp" />
 
@@ -127,7 +122,6 @@
             android:background="@drawable/rounded_borders"
             android:backgroundTint="#F96124"
             android:gravity="center"
-            android:text="Adult"
             android:textColor="@android:color/white"
             android:textSize="25sp" />
     </LinearLayout>
@@ -141,9 +135,10 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="15dp"
+        android:alpha="0.7"
+        android:contentDescription="next"
+        android:enabled="false"
         android:tint="#00FFFFFF"
-        android:enabled = "false"
-        android:alpha = "0.7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/options_container"

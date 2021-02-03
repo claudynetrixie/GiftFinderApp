@@ -4,7 +4,7 @@ public class QuestionModel {
 
     private String question, optionA, optionB, optionC, optionD;
 
-    public QuestionModel(String question, String optionA, String optionB, String optionC, String optionD) {
+    public QuestionModel() {
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;

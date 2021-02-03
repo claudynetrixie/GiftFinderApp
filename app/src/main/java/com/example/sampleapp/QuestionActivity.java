@@ -1,5 +1,6 @@
 package com.example.sampleapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +8,7 @@ import android.animation.Animator;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,12 +18,23 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionActivity extends AppCompatActivity {
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
+
     private TextView question, noIndicator;
     private LinearLayout optionsContainer;
     private ImageButton nextBtn;
@@ -47,41 +60,75 @@ public class QuestionActivity extends AppCompatActivity {
 
 //        final List<QuestionModel> list = new ArrayList<>();
         list = new ArrayList<>();
-        list.add(new QuestionModel("Gift for Him/Her?", "Female", "Male", "Gay", "Lesbian"));
-        list.add(new QuestionModel("Age", "Baby", "Kid", "Teen", "Adult"));
-        list.add(new QuestionModel("Occassion", "Birthday", "Christmas", "Graduation", "Just Because"));
-        list.add(new QuestionModel("Hobbies", "a", "b", "c", "d"));
-        list.add(new QuestionModel("Hobbies", "a", "b", "c", "d"));
+//        list.add(new QuestionModel("Gift for Him/Her?", "Female", "Male", "Gay", "Lesbian"));
+//        list.add(new QuestionModel("Age", "Baby", "Kid", "Teen", "Adult"));
+//        list.add(new QuestionModel("Occassion", "Birthday", "Christmas", "Graduation", "Just Because"));
+//        list.add(new QuestionModel("Hobbies", "a", "b", "c", "d"));
+//        list.add(new QuestionModel("Hobbies", "a", "b", "c", "d"));
 
-        for(int i = 0; i < 4; i++){
-            optionsContainer.getChildAt(i).setOnClickListener(new View.OnClickListener() {
-                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                @Override
-                public void onClick(View v) {
-                    checkAnswer((Button)v);
-                }
-            });
-        }
 
-        playAnim(question, 0, list.get(position).getQuestion());
-
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+        myRef.child("Questions").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                nextBtn.setEnabled(false);
-                nextBtn.setAlpha(0.7f);
-                enableOption(true);
-                position++;
-                if(position == list.size()){
-                    //score activity
-                    return;
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    Log.d(TAG, "IN");
+                    list.add(snapshot.getValue(QuestionModel.class));
+                    QuestionModel value = snapshot.getValue(QuestionModel.class);
+                    Log.d(TAG, "Value is: " + value.getQuestion());
                 }
-                count = 0;
-                playAnim(question, 0, list.get(position).getQuestion());
 
+                Log.d(TAG, "HERE");
+                for(QuestionModel model: list) {
+                    Log.d(TAG, model.getQuestion());
+                    System.out.println(model.getQuestion());
+                }
+
+                if(list.size() > 0){
+                    for(int i = 0; i < 4; i++){
+                        optionsContainer.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                            @Override
+                            public void onClick(View v) {
+                                checkAnswer((Button)v);
+                            }
+                        });
+                    }
+
+                    playAnim(question, 0, list.get(position).getQuestion());
+
+                    nextBtn.setOnClickListener(new View.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                        @Override
+                        public void onClick(View v) {
+                            nextBtn.setEnabled(false);
+                            nextBtn.setAlpha(0.7f);
+                            enableOption(true);
+                            position++;
+                            if(position == list.size()){
+                                //score activity
+                                return;
+                            }
+                            count = 0;
+                            playAnim(question, 0, list.get(position).getQuestion());
+
+                        }
+                    });
+
+                }
+                else{
+                    finish();
+                    Toast.makeText(QuestionActivity.this, "no questions left", Toast.LENGTH_SHORT);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(QuestionActivity.this, error.getMessage(), Toast.LENGTH_SHORT);
             }
         });
+
+
+
     }
 
     private void playAnim (final View view, final int value, final String data){
@@ -92,6 +139,8 @@ public class QuestionActivity extends AppCompatActivity {
                 if(value == 0 && count<4){
                     String option = "";
                     Log.d(TAG, String.valueOf(value));
+
+                    Log.d(TAG, "Play Anim");
 
                     if(count == 0){
                         option= list.get(position).getOptionA();
