@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -188,12 +189,13 @@ public class QuestionActivity extends AppCompatActivity {
     private void checkAnswer(Button selectedOption){
         nextBtn.setEnabled(true);
         nextBtn.setAlpha(1);
-        if(selectedOption.getText().toString().equals(list.get(position).getOptionA())){
-            selectedOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#a83232")));
-        }
-        else{
-
-        }
+        selectedOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#a83232")));
+//        if(selectedOption.getText().toString().equals(list.get(position).getOptionA())){
+//            selectedOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#a83232")));
+//        }
+//        else{
+//
+//        }
 
     }
 
@@ -201,8 +203,21 @@ public class QuestionActivity extends AppCompatActivity {
     private void enableOption(boolean enable){
         for (int i=0; i<4; i++){
             optionsContainer.getChildAt(i).setEnabled(enable);
+            String val = "";
             if(enable){
-                optionsContainer.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#a83232")));
+                switch(i){
+                    case 0: val = "#FFAC8A";
+                        break;
+                    case 1: val = "#FB9C5C";
+                        break;
+                    case 2: val = "#F97924";
+                        break;
+                    case 3: val = "#F96124";
+                        break;
+                }
+                Log.d(TAG, "color change is" + val);
+                optionsContainer.getChildAt(i).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(val)));
+
             }
         }
     }
