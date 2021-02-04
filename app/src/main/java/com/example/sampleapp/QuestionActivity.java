@@ -14,6 +14,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -58,6 +60,7 @@ public class QuestionActivity extends AppCompatActivity {
         noIndicator = findViewById(R.id.no_indicator);
         optionsContainer = findViewById(R.id.options_container);
         nextBtn = findViewById(R.id.next_btn);
+        nextBtn.setBackground(null);
 
 //        final List<QuestionModel> list = new ArrayList<>();
         list = new ArrayList<>();
@@ -96,7 +99,12 @@ public class QuestionActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             nextBtn.setEnabled(false);
-                            nextBtn.setAlpha(0.7f);
+//                            nextBtn.setAlpha(0.05f);
+
+                            Animation animation = new AlphaAnimation(1.0f, 0.0f);
+                            animation.setDuration(1000);
+                            nextBtn.startAnimation(animation);
+
                             enableOption(true);
                             position++;
                             if(position == list.size()){
@@ -188,7 +196,7 @@ public class QuestionActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void checkAnswer(Button selectedOption){
         nextBtn.setEnabled(true);
-        nextBtn.setAlpha(1);
+//        nextBtn.setAlpha(1);
         selectedOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#a83232")));
 //        if(selectedOption.getText().toString().equals(list.get(position).getOptionA())){
 //            selectedOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#a83232")));
