@@ -47,7 +47,7 @@ public class QuestionActivity extends AppCompatActivity {
     private  List<String> ansList = new ArrayList<String>();
 
 
-    private static final String TAG = "MyAppTag";
+    private static final String TAG = "QuestionActivity";
 
 
 
@@ -118,9 +118,16 @@ public class QuestionActivity extends AppCompatActivity {
                                 }
 
                                 Intent newIntent = new Intent(QuestionActivity.this, LoadingActivity.class);
+                                int i = 0;
+                                String str = "";
+                                for ( String ans : ansList ) {
+                                    newIntent.putExtra(String.valueOf(i),  ans);
+                                    Log.d("NEW", ans);
+                                    i++;
+                                }
+
+                                newIntent.putExtra("size",  list.size());
                                 startActivity(newIntent);
-
-
                                 return;
                             }
                             count = 0;
