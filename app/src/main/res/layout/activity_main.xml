@@ -4,27 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorPrimary"
         android:layout_marginBottom="64dp"
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/start_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/app_name"
-            android:textColor="@android:color/white"
-            android:textSize="42sp"
-            android:textStyle="bold" />
-
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@mipmap/giftfindersplash" />
 
     </FrameLayout>
 
@@ -33,13 +31,13 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
-        android:text="Random"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:textSize="20dp"
         android:background="@drawable/rounded_corners"
         android:backgroundTint="#D2CCC9"
         android:stateListAnimator="@null"
+        android:text="Random"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -49,13 +47,14 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:background="@drawable/rounded_corners"
+        android:stateListAnimator="@null"
         android:text="Start Quiz"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
         android:textSize="20dp"
-        android:stateListAnimator="@null"
-        android:background="@drawable/rounded_corners"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/random_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
