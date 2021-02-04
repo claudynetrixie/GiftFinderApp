@@ -44,6 +44,8 @@ public class QuestionActivity extends AppCompatActivity {
     private int count = 0;
     private List<QuestionModel> list = new ArrayList<>();
     private int position = 0;
+    private  List<String> ansList = new ArrayList<String>();
+
 
     private static final String TAG = "MyAppTag";
 
@@ -109,6 +111,16 @@ public class QuestionActivity extends AppCompatActivity {
                             position++;
                             if(position == list.size()){
                                 //score activity
+
+                                Log.d(TAG, "Compilation of Answers");
+                                for ( String ans : ansList ) {
+                                    Log.d(TAG, ans);
+                                }
+
+                                Intent newIntent = new Intent(QuestionActivity.this, LoadingActivity.class);
+                                startActivity(newIntent);
+
+
                                 return;
                             }
                             count = 0;
@@ -195,8 +207,11 @@ public class QuestionActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void checkAnswer(Button selectedOption){
+        String buttonText = selectedOption.getText().toString();
+        Log.d(TAG, "\"" + buttonText + "\" was pressed!");
+        ansList.add(buttonText);
+
         nextBtn.setEnabled(true);
-//        nextBtn.setAlpha(1);
         selectedOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#a83232")));
 //        if(selectedOption.getText().toString().equals(list.get(position).getOptionA())){
 //            selectedOption.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#a83232")));

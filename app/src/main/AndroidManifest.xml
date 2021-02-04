@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/giftfinderimage_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QuestionActivity"></activity>
+        <activity android:name=".LoadingActivity"></activity>
+        <activity android:name=".QuestionActivity" />
         <activity android:name=".GenderActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
