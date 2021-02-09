@@ -74,6 +74,11 @@ def get_items(url, headers):
     for item in r['items']:
         print(item['name'], ' ', float(item['price'])/100000)
         
+    #get image url
+    #https://cf.shopee.ph/file/2a6701992b65b6c87060927a14dec831
+    #urllib.request.urlretrieve(image_url, "local-filename.jpg")
+
+        
 def start():
     #get input
     #loop
