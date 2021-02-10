@@ -6,38 +6,6 @@ Created on Wed Feb 10 02:03:20 2021
 """
 import requests
 
-#Gender: Male, Female, Lesbian, Gay 
-#Age: Baby, Kid, Teen, Adult 
-#Occasion: Birthday, Christmas, Graduation, Just Because 
-#Hobbies: Books, Pets, Toys, Video Games 
-#Cooking, Food, Fashion, Beauty
-
-
-
-#Shopee:
-
-#Male
-#Men's Apparel(103), Men's Bags & Accesories(2755), Men's Shoes(123)
-
-#Female
-#Women's Apparel(102), Women's Accessories(106), Women's Bags(1713), Women's Shoes(531)
-
-#Unisex
-#Makeup and Fragrances(15816), Health and Personal Care(), Home Entertainment()
-#Home Appliances(), Home & Living(), Sports and Travel(),
-#Toys Games and Collectibles(), Motors(), Digital Goods and Vouchers()
-#Pet Care(), Gaming()
-
-#Baby
-#Babies and Kids()
-
-#Technology
-#Mobile and Gadgets(), Mobile Accesories(), Laptops & Computers()
-#Camera()
-
-
-#Age
-#Baby: Babies and Kids()
 
 
 def set_values(option, item_name, category_id):
@@ -46,7 +14,7 @@ def set_values(option, item_name, category_id):
     'User-Agent': 'Mozilla/5',
     }
     
-    #sort by keywords: relevancy, sales
+    #sort by keywords: relevancy, sales, pop (popular)
     sort_by = "relevancy"
     
     #option0: search item from category
@@ -89,10 +57,10 @@ def start():
     #cap to 10 items only
     
     #category
-    set_values(0, "", str(103))
+    set_values(0, "", str(13632))
     
     #string item
-    set_values(1, "lipstick", "")
+    # set_values(1, "lipstick", "")
     
     
     
