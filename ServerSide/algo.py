@@ -6,11 +6,13 @@ Created on Wed Feb 10 02:03:20 2021
 """
 import requests
 
-#Gender: Male, Female, Lesbian, Gay
-#Age: Baby, Kid, Teen, Adult
-#Occasion: Birthday, Christmas, Graduation, Just Because
-#Hobbies: Books, Pets, Toys, Video Games
+#Gender: Male, Female, Lesbian, Gay 
+#Age: Baby, Kid, Teen, Adult 
+#Occasion: Birthday, Christmas, Graduation, Just Because 
+#Hobbies: Books, Pets, Toys, Video Games 
 #Cooking, Food, Fashion, Beauty
+
+
 
 #Shopee:
 
