@@ -18,8 +18,8 @@ Created on Wed Feb 10 21:51:55 2021
 #Male-Adult: 103, 2755, 123
 
 #Female
-#Female-Baby: 113,
-#Female-Kid: 113,
+#Female-Baby: 113(girl),
+#Female-Kid: 113(girl),
 #Female-Teen: 102(teen), 106, 1713, 531
 #Female-Adult: 102, 106, 1713, 531
 
@@ -61,3 +61,70 @@ Created on Wed Feb 10 21:51:55 2021
 
 ##############
 
+# def hobbies(hobby1, hobby2, id_list):
+    
+    
+
+
+# def get_unisex():
+    
+
+def get_male(list):
+    id_list = []
+    
+    if(list[1] =="Baby"):
+        id_list.append("113-boy")
+        
+    elif(list[1] == "Kid"):
+        id_list.append("113-boy")
+    
+    elif (list[1] == "Teen"):
+        id_list.append("103-teen")
+        id_list.append("2755")
+        id_list.append("123")
+    else:
+        id_list.append("103")
+        id_list.append("123")
+        id_list.append("2755")
+            
+    return id_list
+
+
+
+def get_female(list):
+    id_list = []
+    
+    if(list[1] =="Baby"):
+        id_list.append("113-girl")
+        
+    elif(list[1] == "Kid"):
+        id_list.append("113-girl")
+    
+    elif (list[1] == "Teen"):
+        id_list.append("102-teen")
+        id_list.append("106")
+        id_list.append("1713")
+        id_list.append("531")
+    else:
+        id_list.append("102")
+        id_list.append("106")
+        id_list.append("1713")
+        id_list.append("531")
+            
+    return id_list
+    
+    
+
+def get_ids(list):
+    if(list[0] == "Male"):
+        ids = get_male(list)
+    elif(list[0] == "Female"):
+        ids = get_female(list)
+        
+    return ids
+        
+        
+
+list= ['Female', 'Baby', 'Birthday', 'Books', 'Food']
+id_list = get_ids(list)
+print(id_list)
