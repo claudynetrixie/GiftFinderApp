@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -51,6 +53,16 @@ public class LoadingActivity extends AppCompatActivity {
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
         Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
         getPosts(call);
+
+        final Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Do something after 100ms
+                Intent genderIntent = new Intent(LoadingActivity.this, GiftView.class);
+                startActivity(genderIntent);
+            }
+        }, 10000);
 
     }
 
