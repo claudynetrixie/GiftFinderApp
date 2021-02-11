@@ -7,12 +7,12 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
-public class GiftView extends AppCompatActivity {
+public class GiftActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gift_view);
+        setContentView(R.layout.activity_gift_activity);
 
         ImageView imageView = (ImageView) findViewById(R.id.gift1);
 

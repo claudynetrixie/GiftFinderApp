@@ -11,9 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,7 +57,7 @@ public class LoadingActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //Do something after 100ms
-                Intent genderIntent = new Intent(LoadingActivity.this, GiftView.class);
+                Intent genderIntent = new Intent(LoadingActivity.this, GiftActivity.class);
                 startActivity(genderIntent);
             }
         }, 10000);

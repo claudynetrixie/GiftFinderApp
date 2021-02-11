@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GiftView">
+    tools:context=".GiftActivity">
 
     <ImageView
         android:id="@+id/gift1"
         android:layout_width="256dp"
         android:layout_height="261dp"
-        tools:layout_editor_absoluteX="86dp"
-        tools:layout_editor_absoluteY="61dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

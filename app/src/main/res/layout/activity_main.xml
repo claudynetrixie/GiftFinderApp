@@ -32,7 +32,8 @@
                 android:layout_gravity="center"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                app:srcCompat="@drawable/ic_main" />
+                app:srcCompat="@drawable/ic_main"
+                android:contentDescription="@string/todo" />
 
         </LinearLayout>
     </FrameLayout>
@@ -45,9 +46,9 @@
         android:background="@drawable/rounded_corners"
         android:backgroundTint="#D2CCC9"
         android:stateListAnimator="@null"
-        android:text="Random"
+        android:text="@string/random"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,9 +61,9 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/rounded_corners"
         android:stateListAnimator="@null"
-        android:text="Start Quiz"
+        android:text="@string/start_quiz"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/random_btn"
         app:layout_constraintEnd_toEndOf="parent"
