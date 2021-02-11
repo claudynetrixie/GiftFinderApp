@@ -1,13 +1,22 @@
 package com.example.sampleapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
+import android.animation.ArgbEvaluator;
 import android.os.Bundle;
+import android.widget.Adapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
 public class GiftActivity extends AppCompatActivity {
+
+    ViewPager viewPager;
+    Adapter adapter;
+    List<Model> models;
+    Integer[] colors = null;
+    ArgbEvaluator argbEvaluator = new ArgbEvaluator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
