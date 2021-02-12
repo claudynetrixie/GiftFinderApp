@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class Adapter extends PagerAdapter {
@@ -42,6 +44,9 @@ public class Adapter extends PagerAdapter {
         title = view.findViewById(R.id.title);
         desc = view.findViewById(R.id.desc);
         imageView.setImageResource(models.get(position).getImage());
+
+//        Glide.with(context).load("http://goo.gl/gEgYUd").into(imageView);
+
         title.setText(models.get(position).getTitle());
         desc.setText(models.get(position).getDesc());
         view.setOnClickListener(new View.OnClickListener() {

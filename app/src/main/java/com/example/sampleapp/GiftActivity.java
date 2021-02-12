@@ -6,7 +6,12 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.animation.ArgbEvaluator;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 //import android.widget.Adapter;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +23,7 @@ public class GiftActivity extends AppCompatActivity {
     List<CardModel> models;
     Integer[] colors = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
+    ArrayList<String> links;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,14 @@ public class GiftActivity extends AppCompatActivity {
         //for url images
 //        ImageView imageView = (ImageView) findViewById(R.id.gift1);
 //        Glide.with(this).load("https://cf.shopee.ph/file/2a6701992b65b6c87060927a14dec831").into(imageView);
+
+        links = new ArrayList<String>();
+        links.add("https://cf.shopee.ph/file/2a6701992b65b6c87060927a14dec831");
+        links.add("https://cf.shopee.ph/file/2a6701992b65b6c87060927a14dec831");
+        links.add("https://cf.shopee.ph/file/2a6701992b65b6c87060927a14dec831");
+        links.add("https://cf.shopee.ph/file/2a6701992b65b6c87060927a14dec831");
+
+
 
         models = new ArrayList<>();
         models.add(new CardModel(R.mipmap.brochure, "Brochure", "Brochure is an informative paper document (often also used for advertising) that can be folded into a template"));
