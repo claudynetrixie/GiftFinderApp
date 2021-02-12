@@ -6,10 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.animation.ArgbEvaluator;
 import android.os.Bundle;
-import android.widget.Adapter;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
+//import android.widget.Adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,17 +22,18 @@ public class GiftActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gift_activity);
+        setContentView(R.layout.activity_gift);
 
         //for url images
 //        ImageView imageView = (ImageView) findViewById(R.id.gift1);
 //        Glide.with(this).load("https://cf.shopee.ph/file/2a6701992b65b6c87060927a14dec831").into(imageView);
 
         models = new ArrayList<>();
-        models.add(new CardModel(R.drawable.brochure, "Brochure", "Brochure is an informative paper document (often also used for advertising) that can be folded into a template"));
-        models.add(new CardModel(R.drawable.sticker, "Sticker", "Sticker is a type of label: a piece of printed paper, plastic, vinyl, or other material with pressure sensitive adhesive on one side"));
-        models.add(new CardModel(R.drawable.poster, "Poster", "Poster is any piece of printed paper designed to be attached to a wall or vertical surface."));
-        models.add(new CardModel(R.drawable.namecard, "Namecard", "Business cards are cards bearing business information about a company or individual."));
+        models.add(new CardModel(R.mipmap.brochure, "Brochure", "Brochure is an informative paper document (often also used for advertising) that can be folded into a template"));
+        models.add(new CardModel(R.mipmap.sticker, "Sticker", "Sticker is a type of label: a piece of printed paper, plastic, vinyl, or other material with pressure sensitive adhesive on one side"));
+        models.add(new CardModel(R.mipmap.poster, "Poster", "Poster is any piece of printed paper designed to be attached to a wall or vertical surface."));
+        models.add(new CardModel(R.mipmap.namecard, "Namecard", "Business cards are cards bearing business information about a company or individual."));
+
         adapter = new Adapter(models, this);
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
