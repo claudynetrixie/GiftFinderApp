@@ -43,17 +43,17 @@ public class Adapter extends PagerAdapter {
         imageView = view.findViewById(R.id.image);
         title = view.findViewById(R.id.title);
         desc = view.findViewById(R.id.desc);
-        imageView.setImageResource(models.get(position).getImage());
+//        imageView.setImageResource(models.get(position).getImage());
 
-//        Glide.with(context).load("http://goo.gl/gEgYUd").into(imageView);
+        Glide.with(context).load(models.get(position).getImage_url()).into(imageView);
 
-        title.setText(models.get(position).getTitle());
-        desc.setText(models.get(position).getDesc());
+        title.setText(models.get(position).getName());
+        desc.setText(models.get(position).getPrice());
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("param", models.get(position).getTitle());
+                intent.putExtra("param", models.get(position).getName());
                 context.startActivity(intent);
                 // finish();
             }
