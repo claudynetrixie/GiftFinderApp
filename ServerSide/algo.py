@@ -28,7 +28,7 @@ def set_values(option, item_name, category_id, num_items, item_list):
         item = item_name
         url = 'https://shopee.ph/api/v2/search_items/?by=' + sort_by  +'&categoryids=' + category_id + '&keyword=' + item + '&limit=' + str(num_items) +'&newest=0&order=desc&page_type=search'  
     
-    print(url)
+    # print(url)
     item_list = get_items(url, headers, item_list) 
     
     return item_list
@@ -37,6 +37,7 @@ def set_values(option, item_name, category_id, num_items, item_list):
     
     
 def get_items(url, headers, item_list):
+    print(url)
     r = requests.get(url, headers = headers).json()
 
     # item['price_min'] and ['price_max']
@@ -51,8 +52,12 @@ def get_items(url, headers, item_list):
         itemid = str(item['itemid'])
         image = str(item['image'])
         
+    
         url = "https://shopee.ph/Item-i." + shopid + "." + itemid
         image_url = "https://cf.shopee.ph/file/" + image
+        
+        print(image_url)
+        print(image)
         
         i = {'name': name, 
              'price': price,
@@ -85,8 +90,8 @@ def start():
     
     list_i= ['Male', 'Adult', 'Birthday', 'Books', 'Food']
     id_list, weight_list = get_ids(list_i)
-    print(id_list)
-    print(weight_list)
+    # print(id_list)
+    # print(weight_list)
     
     item_list = []
     for item, weight in zip(id_list, weight_list):
