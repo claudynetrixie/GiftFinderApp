@@ -2,6 +2,7 @@ package com.example.sampleapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,8 +53,13 @@ public class Adapter extends PagerAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("param", models.get(position).getName());
+//                Intent intent = new Intent(context, DetailActivity.class);
+//                intent.putExtra("param", models.get(position).getName());
+
+                Uri uri = Uri.parse(models.get(position).getUrl()); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+
+
                 context.startActivity(intent);
                 // finish();
             }
