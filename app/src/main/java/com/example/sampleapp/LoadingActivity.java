@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.List;
 
 import retrofit2.Call;
@@ -22,6 +23,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoadingActivity extends AppCompatActivity {
     private static final String TAG = "LoadingActivity";
     private Integer size = 0;
+    private String api_url = "https://04qr4ecovh.execute-api.ap-southeast-1.amazonaws.com/dev/";
+
+    private List<CardModel> posts;
 
     Animation textAnim;
     TextView waitingPage;
@@ -45,25 +49,62 @@ public class LoadingActivity extends AppCompatActivity {
         waitingPage.setAnimation(textAnim);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://jsonplaceholder.typicode.com/")
+//                .baseUrl("https://jsonplaceholder.typicode.com/")
+                .baseUrl(api_url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-        Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
-        getPosts(call);
-
-        final Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //Do something after 100ms
-                Intent genderIntent = new Intent(LoadingActivity.this, GiftActivity.class);
-                startActivity(genderIntent);
-            }
-        }, 10000);
+//        Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
+//        getPosts(call);
+        Call<List<CardModel>> call = jsonPlaceHolderApi.getGifts();
+        getGifts(call);
 
     }
 
+
+    private void getGifts(Call<List<CardModel>> call){
+
+        Log.d(TAG, "inside getPosts");
+        call.enqueue(new Callback<List<CardModel>>() {
+            @Override
+            public void onResponse(Call<List<CardModel>> call, Response<List<CardModel>> response) {
+                if (!response.isSuccessful()) {
+//                    textViewResult.setText("Code: " + response.code());
+                    Log.d(TAG, "FAILURE parsing");
+                    return;
+                }
+                List <CardModel> gifts= response.body();
+                for (CardModel gift : gifts) {
+                    String content = "";
+                    content += "Name: " + gift.getName() + "\n";
+                    content += "Price: " + gift.getPrice() + "\n";
+                    content += "Title: " + gift.getUrl() + "\n";
+                    content += "Text: " + gift.getImage_url() + "\n\n";
+                    Log.d(TAG, content);
+                }
+
+                final Intent loadingIntent = new Intent(LoadingActivity.this, GiftActivity.class);
+                loadingIntent.putExtra("LIST", (Serializable) gifts);
+
+
+                final Handler handler = new Handler(Looper.getMainLooper());
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Do something after 100ms
+                        startActivity(loadingIntent);
+                    }
+                }, 1000);
+
+            }
+            @Override
+            public void onFailure(Call<List<CardModel>> call, Throwable t) {
+//                textViewResult.setText(t.getMessage());
+                Log.d(TAG, "FAILURE");
+            }
+        });
+
+    }
 
     private void getPosts(Call<List<Post>> call){
         Log.d(TAG, "inside getPosts");
