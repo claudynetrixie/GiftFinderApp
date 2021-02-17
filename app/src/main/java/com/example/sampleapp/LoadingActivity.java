@@ -12,8 +12,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,6 +30,7 @@ public class LoadingActivity extends AppCompatActivity {
     private String api_url = "https://04qr4ecovh.execute-api.ap-southeast-1.amazonaws.com/dev/";
 
     private List<CardModel> posts;
+    private  List<String> ansList = new ArrayList<String>();
 
     Animation textAnim;
     TextView waitingPage;
@@ -41,22 +46,37 @@ public class LoadingActivity extends AppCompatActivity {
         for (i = 0; i < size; i++){
             Log.d(TAG, "GOT from " + String.valueOf(i) + ": " +
                     String.valueOf(getIntent().getStringExtra(Integer.toString(i))) );
-
+            ansList.add(String.valueOf(getIntent().getStringExtra(Integer.toString(i))) );
         }
 
         textAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         waitingPage = findViewById(R.id.loading_text);
         waitingPage.setAnimation(textAnim);
 
+
+        //rest functionality
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        //OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        final OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .build();
+
+
+
         Retrofit retrofit = new Retrofit.Builder()
 //                .baseUrl("https://jsonplaceholder.typicode.com/")
                 .baseUrl(api_url)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
                 .build();
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 //        Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
 //        getPosts(call);
-        Call<List<CardModel>> call = jsonPlaceHolderApi.getGifts();
+        Call<List<CardModel>> call = jsonPlaceHolderApi.getGifts(ansList);
         getGifts(call);
 
     }
@@ -73,7 +93,9 @@ public class LoadingActivity extends AppCompatActivity {
                     Log.d(TAG, "FAILURE parsing");
                     return;
                 }
+
                 List <CardModel> gifts= response.body();
+
                 for (CardModel gift : gifts) {
                     String content = "";
                     content += "Name: " + gift.getName() + "\n";
@@ -100,7 +122,7 @@ public class LoadingActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<CardModel>> call, Throwable t) {
 //                textViewResult.setText(t.getMessage());
-                Log.d(TAG, "FAILURE");
+                Log.d(TAG, "FAILURE: " + t.getMessage());
             }
         });
 
