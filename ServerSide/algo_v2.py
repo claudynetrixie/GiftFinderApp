@@ -137,8 +137,8 @@ def start():
     # print(id_list)
     # print(weight_list)
     
-    # id_list = ['13632-Adult']
-    # weight_list = [1]
+    id_list = ['13632-Adult']
+    weight_list = [1]
     
     item_list = []
     for item, weight in zip(id_list, weight_list):

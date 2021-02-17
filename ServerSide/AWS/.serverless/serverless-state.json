@@ -6,7 +6,7 @@
     },
     "provider": {
       "name": "aws",
-      "runtime": "python3.8",
+      "runtime": "python3.7",
       "lambdaHashingVersion": "20201221",
       "region": "ap-southeast-1",
       "stage": "dev",
@@ -175,10 +175,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/gift-finder-app/dev/1613493635098-2021-02-16T16:40:35.098Z/gift-finder-app.zip"
+                "S3Key": "serverless/gift-finder-app/dev/1613571287267-2021-02-17T14:14:47.267Z/gift-finder-app.zip"
               },
               "Handler": "handler.hello",
-              "Runtime": "python3.8",
+              "Runtime": "python3.7",
               "FunctionName": "gift-finder-app-dev-hello",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -193,14 +193,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionRn2wwiXiKvPHQtgxLz9vsqF1jzqJKr0KKYGf8w8": {
+          "HelloLambdaVersionm07G1lcBurBdOltD6xFZHpaNlgcniv46VpsJMfIRk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "mnR5rPkQmN9jDreo1cgG8Yo51XeODsbCS+ZrATqLWN0="
+              "CodeSha256": "VMerM/1oqcryJ5Ob1Dbz/cBUF+FZnEGoKoPP9qIin44="
             }
           }
         },
@@ -213,7 +213,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionRn2wwiXiKvPHQtgxLz9vsqF1jzqJKr0KKYGf8w8"
+              "Ref": "HelloLambdaVersionm07G1lcBurBdOltD6xFZHpaNlgcniv46VpsJMfIRk"
             }
           }
         }
@@ -311,9 +311,9 @@
         "package": {},
         "memory": 1024,
         "timeout": 6,
-        "runtime": "python3.8",
+        "runtime": "python3.7",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionRn2wwiXiKvPHQtgxLz9vsqF1jzqJKr0KKYGf8w8"
+        "versionLogicalId": "HelloLambdaVersionm07G1lcBurBdOltD6xFZHpaNlgcniv46VpsJMfIRk"
       }
     },
     "configValidationMode": "warn",
@@ -335,7 +335,7 @@
     "artifact": "C:\\users\\claudyne\\AndroidStudioProjects\\GiftFinderApp\\ServerSide\\AWS\\.serverless\\gift-finder-app.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/gift-finder-app/dev/1613493635098-2021-02-16T16:40:35.098Z",
+    "artifactDirectoryName": "serverless/gift-finder-app/dev/1613571287267-2021-02-17T14:14:47.267Z",
     "artifact": "gift-finder-app.zip"
   }
 }
