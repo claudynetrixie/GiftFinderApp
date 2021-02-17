@@ -49,10 +49,10 @@ def get_items(url, item_list, num_items):
     driver = webdriver.Chrome( r'C:\chromedriver_win32\chromedriver.exe', options = chrome_options)
     driver.get(url)
     
-    time.sleep(5)
-    for i in range(10):
-        driver.execute_script("window.scrollBy(0, 350)")
-        time.sleep(1)
+    time.sleep(3)
+    # for i in range(10):
+    #     driver.execute_script("window.scrollBy(0, 350)")
+    #     time.sleep(1)
         
     content=driver.page_source
     soup=BeautifulSoup(content, features="lxml")

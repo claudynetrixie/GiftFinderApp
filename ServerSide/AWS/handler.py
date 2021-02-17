@@ -58,10 +58,10 @@ def get_items(url, item_list, num_items):
     
     driver.get(url)
     
-    time.sleep(5)
-    for i in range(10):
-        driver.execute_script("window.scrollBy(0, 350)")
-        time.sleep(1)
+    time.sleep(3)
+    # for i in range(10):
+    #     driver.execute_script("window.scrollBy(0, 350)")
+    #     time.sleep(1)
         
     content=driver.page_source
     soup=BeautifulSoup(content, features="html.parser")
@@ -119,14 +119,19 @@ def get_items(url, item_list, num_items):
             break
         
    
+    driver.close()
+    driver.quit()
     return item_list
 
 
 
 
 def hello(event, context):
+    
+    print(event)
+    list_i = event
    
-    list_i= ['Male', 'Adult', 'Birthday', 'Books', 'Food']
+    # list_i= ['Male', 'Adult', 'Birthday', 'Books', 'Food']
     id_list, weight_list = get_ids(list_i)
   
     item_list = []
@@ -146,5 +151,7 @@ def hello(event, context):
     
 
     return item_list
+    # return r
+    # return event
 
     

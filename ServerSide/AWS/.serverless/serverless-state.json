@@ -175,7 +175,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/gift-finder-app/dev/1613571287267-2021-02-17T14:14:47.267Z/gift-finder-app.zip"
+                "S3Key": "serverless/gift-finder-app/dev/1613583403788-2021-02-17T17:36:43.788Z/gift-finder-app.zip"
               },
               "Handler": "handler.hello",
               "Runtime": "python3.7",
@@ -193,14 +193,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersionm07G1lcBurBdOltD6xFZHpaNlgcniv46VpsJMfIRk": {
+          "HelloLambdaVersionef0uCeSlT3fmeIPCovGvteYkYX761FPLjFtFUxd2p5Q": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "VMerM/1oqcryJ5Ob1Dbz/cBUF+FZnEGoKoPP9qIin44="
+              "CodeSha256": "OUnAhv23xaxfxDF3N9xQG7iEgj2zT5KoMWofO2OmwNE="
             }
           }
         },
@@ -213,7 +213,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionm07G1lcBurBdOltD6xFZHpaNlgcniv46VpsJMfIRk"
+              "Ref": "HelloLambdaVersionef0uCeSlT3fmeIPCovGvteYkYX761FPLjFtFUxd2p5Q"
             }
           }
         }
@@ -313,7 +313,7 @@
         "timeout": 6,
         "runtime": "python3.7",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionm07G1lcBurBdOltD6xFZHpaNlgcniv46VpsJMfIRk"
+        "versionLogicalId": "HelloLambdaVersionef0uCeSlT3fmeIPCovGvteYkYX761FPLjFtFUxd2p5Q"
       }
     },
     "configValidationMode": "warn",
@@ -335,7 +335,7 @@
     "artifact": "C:\\users\\claudyne\\AndroidStudioProjects\\GiftFinderApp\\ServerSide\\AWS\\.serverless\\gift-finder-app.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/gift-finder-app/dev/1613571287267-2021-02-17T14:14:47.267Z",
+    "artifactDirectoryName": "serverless/gift-finder-app/dev/1613583403788-2021-02-17T17:36:43.788Z",
     "artifact": "gift-finder-app.zip"
   }
 }
