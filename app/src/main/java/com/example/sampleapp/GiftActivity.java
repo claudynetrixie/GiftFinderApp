@@ -50,6 +50,7 @@ public class GiftActivity extends AppCompatActivity {
             content += "Image_url: " + post.getImage_url() + "\n\n";
             Log.d(TAG, content);
 //            links.add(post.getImage_url());
+
             models.add(new CardModel(post.getName() , post.getPrice() , post.getUrl(), post.getImage_url()));
 
         }
@@ -81,7 +82,13 @@ public class GiftActivity extends AppCompatActivity {
                 getResources().getColor(R.color.color1),
                 getResources().getColor(R.color.color2),
                 getResources().getColor(R.color.color3),
-                getResources().getColor(R.color.color4)
+                getResources().getColor(R.color.color4),
+                getResources().getColor(R.color.color5),
+                getResources().getColor(R.color.color6),
+                getResources().getColor(R.color.color7),
+                getResources().getColor(R.color.color8),
+                getResources().getColor(R.color.color9),
+                getResources().getColor(R.color.color10)
         };
         colors = colors_temp;
 
