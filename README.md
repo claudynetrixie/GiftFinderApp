@@ -81,27 +81,27 @@ You can either connect an Android device to your development machine or use the 
 
 ### Homepage and Quiz:
 <p float = "left">
-<img src="app/src/main/Screenshots/HomePage.png" width="150" align = "center">
-<img src="app/src/main/Screenshots/1.png" width="150" align = "center">
-<img src="app/src/main/Screenshots/2.png" width="150" align = "center">
-<img src="app/src/main/Screenshots/3.png" width="150" align = "center">
-<img src="app/src/main/Screenshots/4.png" width="150" align = "center">
-<img src="app/src/main/Screenshots/5.png" width="150" align = "center">
+<img src="app/src/main/Screenshots/HomePage.png" width="130" align = "center">
+<img src="app/src/main/Screenshots/1.png" width="130" align = "center">
+<img src="app/src/main/Screenshots/2.png" width="130" align = "center">
+<img src="app/src/main/Screenshots/3.png" width="130" align = "center">
+<img src="app/src/main/Screenshots/4.png" width="130" align = "center">
+<img src="app/src/main/Screenshots/5.png" width="130" align = "center">
 </p>
 
 ### Results (Gift Recommendations):
 <p float = "left">
-<img src="app/src/main/Screenshots/R1.png" width="180" align = "center">
-<img src="app/src/main/Screenshots/R2.png" width="180" align = "center">
-<img src="app/src/main/Screenshots/R3.png" width="180" align = "center">
-<img src="app/src/main/Screenshots/R4.png" width="180" align = "center">
-<img src="app/src/main/Screenshots/R5.png" width="180" align = "center">
+<img src="app/src/main/Screenshots/R1.png" width="150" align = "center">
+<img src="app/src/main/Screenshots/R2.png" width="150" align = "center">
+<img src="app/src/main/Screenshots/R3.png" width="150" align = "center">
+<img src="app/src/main/Screenshots/R4.png" width="150" align = "center">
+<img src="app/src/main/Screenshots/R5.png" width="150" align = "center">
 </p>
 
 <p float = "left">
-<img src="app/src/main/Screenshots/R6.png" width="180" align = "center">
-<img src="app/src/main/Screenshots/R7.png" width="180" align = "center">
-<img src="app/src/main/Screenshots/R8.png" width="180" align = "center">
-<img src="app/src/main/Screenshots/R9.png" width="180" align = "center">
-<img src="app/src/main/Screenshots/R10.png" width="180" align = "center">
+<img src="app/src/main/Screenshots/R6.png" width="150" align = "center">
+<img src="app/src/main/Screenshots/R7.png" width="150" align = "center">
+<img src="app/src/main/Screenshots/R8.png" width="150" align = "center">
+<img src="app/src/main/Screenshots/R9.png" width="150" align = "center">
+<img src="app/src/main/Screenshots/R10.png" width="150" align = "center">
 </p>
